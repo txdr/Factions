@@ -5,4 +5,7 @@ commands.pay.successInitializer: "&aYou have successfully paid &e{amount} {type}
 commands.pay.successReceiver: "&aYou have received &e{amount} {type} &afrom &e{player}&a."
 commands.givecurrency.successInitializer: "&aSuccessfully gave &e{amount} {type} &ato &e{player}&a."
 commands.my.otherplayersbalance: "&e{player}'s &ahas &e{amount} {type}&a."
-commands.my.mybalance: "&aYour &e{type} &a"
+commands.my.mybalance: "&aYour &e{type} &abalance is &e{amount}&a."
+commands.kits.cantfindkit: "&cCould not find a kit with that name."
+module.kits.equipKit: "&aYou have equipped the &r{fancyName}&r&a kit!"
+module.kits.droppedGround: "&cYour inventory was too full, and some items from your kit have dropped on the ground."

@@ -11,4 +11,27 @@ class FormatUtils {
         return $number . $prefix;
     }
 
+    public static function numberToHumanReadable($seconds) : string {
+        $units = [
+            "day" => 86400,
+            "hour" => 3600,
+            "minute" => 60,
+            "second" => 1
+        ];
+        $result = "";
+        foreach ($units as $unit => $value) {
+            if ($seconds >= $value) {
+                $count = floor($seconds / $value);
+                $result .= $count . " " . $unit;
+                if ($count > 1) {
+                    $result .= "s";
+                }
+                $result .= ", ";
+                $seconds -= $count * $value;
+            }
+        }
+        $result = rtrim($result, ",");
+        return preg_replace('/, ([^,]+)$/', ' and $1', $result);
+    }
+
 }

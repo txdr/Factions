@@ -20,7 +20,9 @@ class SessionManager {
         Server::getInstance()->getCommandMap()->registerAll("Factions", [
             new PayCommand(),
             new GiveCurrencyCommand(),
-            new MyCommand("coins", PlayerSession::BALANCE_COINS)
+            new MyCommand("coins", PlayerSession::BALANCE_COINS),
+            new MyCommand("mobcoins", PlayerSession::BALANCE_MOBCOINS),
+            new MyCommand("exp", PlayerSession::BALANCE_EXPERIENCE)
         ]);
     }
 

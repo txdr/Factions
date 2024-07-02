@@ -20,10 +20,13 @@ class PlayerSession {
 
     private string $language;
 
+    private array $kitCoolDowns;
+
     public function __construct(Player $player) {
         $this->player = $player;
         $this->balances = [0, 0, 0];
         $this->language = "en";
+        $this->kitCoolDowns = [];
     }
 
     public function close() : void {
@@ -44,6 +47,17 @@ class PlayerSession {
 
     public function getMessage(string $name, array $replace = [[], []]) : string {
         return LanguageManager::getInstance()->getTranslation($this->language, $name, $replace);
+    }
+
+    public function setKitCoolDown(string $kit) : void {
+        $this->kitCoolDowns[$kit] = time();
+    }
+
+    public function getRemainingKitCoolDown(string $kit, int $coolDown) : int {
+        if (is_null($result = $this->kitCoolDowns[$kit])) {
+            return -1;
+        }
+        return $coolDown - (time() - $result);
     }
 
     public function getPlayer() : Player {

@@ -16,3 +16,5 @@ permissions:
     default: op
   commands.my:
     default: true
+  commands.kits:
+    default: true

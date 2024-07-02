@@ -9,6 +9,7 @@ use pocketmine\Server;
 use taylor\factions\Main;
 use taylor\factions\sessions\PlayerSession;
 use taylor\factions\sessions\SessionManager;
+use taylor\factions\utils\FormatUtils;
 
 class MyCommand extends BaseCommand {
 
@@ -40,10 +41,10 @@ class MyCommand extends BaseCommand {
                 return;
             }
             $playerSession = SessionManager::getInstance()->getSession($player);
-            $sender->sendMessage($session->getMessage("commands.my.otherplayersbalance", [["{player}", "{amount}", "{type}"], [$player->getName(), $playerSession->getBalance($this->typeID), $this->typeStr]]));
+            $sender->sendMessage($session->getMessage("commands.my.otherplayersbalance", [["{player}", "{amount}", "{type}"], [$player->getName(), FormatUtils::numberToSuffix($playerSession->getBalance($this->typeID)), $this->typeStr]]));
             return;
         }
-        $sender->sendMessage();
+        $sender->sendMessage($session->getMessage("commands.my.mybalance", [["{type}", "{amount}"], [$this->typeStr, FormatUtils::numberToSuffix($session->getBalance($this->typeID))]]));
     }
 
 }
