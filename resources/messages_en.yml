@@ -1,0 +1,8 @@
+commands.cantFindPlayer: "&cCould not find that player."
+commands.pay.cantPaySelf: "&cYou cannot pay yourself."
+commands.pay.notEnoughMoney: "&cYou do not have enough &e{type} &cto make this payment."
+commands.pay.successInitializer: "&aYou have successfully paid &e{amount} {type} &ato &e{player}&a."
+commands.pay.successReceiver: "&aYou have received &e{amount} {type} &afrom &e{player}&a."
+commands.givecurrency.successInitializer: "&aSuccessfully gave &e{amount} {type} &ato &e{player}&a."
+commands.my.otherplayersbalance: "&e{player}'s &ahas &e{amount} {type}&a."
+commands.my.mybalance: "&aYour &e{type} &a"
