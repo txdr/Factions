@@ -7,6 +7,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
+use taylor\factions\kits\KitsManager;
 use taylor\factions\sessions\SessionManager;
 use taylor\factions\utils\LanguageManager;
 
@@ -41,6 +42,7 @@ class Main extends PluginBase {
         );
 
         new LanguageManager();
+        new KitsManager();
         new SessionManager();
         $this->connector->waitAll();
 

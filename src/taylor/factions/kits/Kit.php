@@ -54,6 +54,17 @@ class Kit {
         return $this->type;
     }
 
+    public function getFormSubTitle(Player $player) : string {
+        $session = SessionManager::getInstance()->getSession($player);
+        if ($session->getRemainingKitCoolDown($this->getName(), $this->getCoolDown()) > 0) {
+            return "&cOn Cool Down!";
+        }
+        if ($this->getPermission() !== "" && !$player->hasPermission($this->getPermission())) {
+            return "&cNo Permission!";
+        }
+        return "&aReady to Equip!";
+    }
+
     public function equip(Player $player) : void {
         $session = SessionManager::getInstance()->getSession($player);
         $player->sendMessage($session->getMessage("module.kits.equipKit", [["{fancyName}"], [$this->getFancyName()]]));

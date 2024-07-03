@@ -46,7 +46,7 @@ class PaymentSubCommand extends BaseSubCommand {
         }
         $amount = abs($args["amount"]);
         if ($amount > $session->getBalance($this->typeID)) {
-            $sender->sendMessage($session->getMessage("commands.pay..notEnoughMoney", [["{type}"], [$this->typeStr]]));
+            $sender->sendMessage($session->getMessage("commands.pay.notEnoughMoney", [["{type}"], [$this->typeStr]]));
             return;
         }
         $session->takeFromBalance($amount, $this->typeID);

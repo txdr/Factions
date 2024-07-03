@@ -1,6 +1,12 @@
 <?php namespace taylor\factions\utils;
 
+use dktapps\pmforms\MenuOption;
+
 class FormatUtils {
+
+    public static function getCloseButton() : MenuOption {
+        return new MenuOption("Close Form.");
+    }
 
     public static function numberToSuffix(int $number) : string {
         $prefixes = ["", "K", "M", "B", "T", "Q"];

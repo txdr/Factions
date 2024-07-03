@@ -18,3 +18,5 @@ permissions:
     default: true
   commands.kits:
     default: true
+  commands.kitsmanager:
+    default: op

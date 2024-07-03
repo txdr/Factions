@@ -21,9 +21,17 @@ use pocketmine\nbt\TreeRoot;
 use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 
-// This is not my code - Taylor
+// This is not my code (I believe it is Azzis, but it might be from the pocketmine github) - Taylor
 
 final class ItemSerializer {
+
+    public static function serializeMultiple(array $items) : array {
+        return array_map(fn(Item $item) => self::serializeItem($item), $items);
+    }
+
+    public static function unserializeMultiple(array $items) : array {
+        return array_map(fn(array $item) => self::parseItem($item), $items);
+    }
 
     /**
      * @param Item $item

@@ -1,25 +1,68 @@
 <?php namespace taylor\factions\kits;
 
+use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
+use taylor\factions\kits\commands\KitsCommand;
+use taylor\factions\Main;
+use taylor\factions\utils\ItemSerializer;
 
 class KitsManager {
 
     use SingletonTrait;
 
-    public const VALID_GROUPS = ["regular", "gkit"];
+    public const VALID_GROUPS = ["Regular Kits", "God Kits"];
 
     /** @var array<string, Kit> */
     private array $kits = [];
 
-    /** @var array<string, string> */
-    private array $kitToGroup = [];
-
     public function __construct() {
         self::setInstance($this);
+
+        Main::getInstance()->getDatabase()->executeGeneric("kits.init");
+
+        Server::getInstance()->getCommandMap()->registerAll("Factions", [
+            new KitsCommand()
+        ]);
+    }
+
+    /*** @return Kit[] */
+    public function getKits() : array {
+        return $this->kits;
+    }
+
+    /**
+     * @param string $group
+     * @return array<Kit>
+     */
+    public function getKitsOfGroup(string $group) : array {
+        return array_filter($this->kits, fn(Kit $kit) => $kit->getType() == $group);
     }
 
     public function getKit(string $name) : ?Kit {
         return $this->kits[$name] ?? null;
+    }
+
+    public function insertKit(
+        string $name,
+        string $fancyName,
+        string $permission,
+        int $coolDown,
+        string $type,
+        array $contents = []
+    ) : void {
+        $this->kits[$name] = new Kit($name, $fancyName, $contents, $coolDown, $permission, $type);
+        Main::getInstance()->getDatabase()->executeInsert("kits.insert", [
+            ":kitName" => $name,
+            ":kitFancyName" => $fancyName,
+            ":kitPermission" => $permission,
+            ":kitCoolDown" => $coolDown,
+            ":kitContents" => json_encode(ItemSerializer::serializeMultiple($contents))
+        ]);
+    }
+
+    public function deleteKit(string $name) : void {
+        unset($this->kits[$name]);
+        Main::getInstance()->getDatabase()->executeGeneric("kits.delete", [":kitName" => $name]);
     }
 
 }
