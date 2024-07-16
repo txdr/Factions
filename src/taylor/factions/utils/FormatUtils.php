@@ -36,7 +36,7 @@ class FormatUtils {
                 $seconds -= $count * $value;
             }
         }
-        $result = rtrim($result, ",");
+        $result = rtrim($result, ", ");
         return preg_replace('/, ([^,]+)$/', ' and $1', $result);
     }
 

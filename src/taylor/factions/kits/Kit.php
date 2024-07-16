@@ -1,5 +1,8 @@
 <?php namespace taylor\factions\kits;
 
+use muqsit\invmenu\InvMenu;
+use muqsit\invmenu\type\InvMenuTypeIds;
+use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 use taylor\factions\sessions\SessionManager;
@@ -54,12 +57,34 @@ class Kit {
         return $this->type;
     }
 
+    public function editItems(Player $player) : void {
+        $menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
+        $menu->send($player, "Edit " . $this->getName() . " Items");
+        $menu->getInventory()->setContents($this->getContents());
+        $menu->setInventoryCloseListener(function(Player $player, Inventory $inventory) : void {
+             $this->contents = $inventory->getContents();
+             $player->sendMessage(SessionManager::getInstance()->getSession($player)->getMessage("messages.kitsmgr.successfulEdit"));
+             $this->sync();
+        });
+    }
+
+    public function sync() : void {
+        KitsManager::getInstance()->insertKit(
+            $this->getName(),
+            $this->getFancyName(),
+            $this->getPermission(),
+            $this->getCoolDown(),
+            $this->getType(),
+            $this->getContents()
+        );
+    }
+
     public function getFormSubTitle(Player $player) : string {
         $session = SessionManager::getInstance()->getSession($player);
         if ($session->getRemainingKitCoolDown($this->getName(), $this->getCoolDown()) > 0) {
             return "&cOn Cool Down!";
         }
-        if ($this->getPermission() !== "" && !$player->hasPermission($this->getPermission())) {
+        if ($this->getPermission() !== "NO_PERMISSION" && !$player->hasPermission($this->getPermission())) {
             return "&cNo Permission!";
         }
         return "&aReady to Equip!";

@@ -7,7 +7,7 @@ version: 1.0.0
 main: taylor\factions\Main
 
 depend:
-  - DEVirion
+  - DEVirion # Required to run libasynql.
 
 permissions:
   commands.pay:
@@ -20,3 +20,9 @@ permissions:
     default: true
   commands.kitsmanager:
     default: op
+  commands.permission:
+    default: op
+  commands.group:
+    default: op
+  commands.faction:
+    default: true

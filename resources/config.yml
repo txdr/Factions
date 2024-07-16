@@ -1,0 +1,7 @@
+max-faction-size: 5
+
+groups:
+  Guest:
+    fancyName: "&r&l&7Guest"
+    permissions: []
+    priority: 0 # Group with the highest priority will be shown cosmetically.

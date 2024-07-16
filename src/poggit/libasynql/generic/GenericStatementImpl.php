@@ -198,7 +198,7 @@ abstract class GenericStatementImpl implements GenericStatement, JsonSerializabl
 
 			foreach($this->variables as $variable){
 				if(!$variable->isOptional() && !array_key_exists($variable->getName(), $vars)){
-					throw new InvalidArgumentException("Missing required variable {$variable->getName()}");
+                    throw new InvalidArgumentException("Missing required variable {$variable->getName()}");
 				}
 			}
 

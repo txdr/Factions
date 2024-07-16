@@ -7,6 +7,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
+use taylor\factions\factions\FactionsManager;
+use taylor\factions\groups\GroupsManager;
 use taylor\factions\kits\KitsManager;
 use taylor\factions\sessions\SessionManager;
 use taylor\factions\utils\LanguageManager;
@@ -17,15 +19,20 @@ class Main extends PluginBase {
 
     private DataConnector $connector;
 
+    public function onLoad() : void {
+        $this->getServer()->getLogger()->notice("[CORE] Loading.");
+    }
+
     /*** @throws HookAlreadyRegistered */
     public function onEnable() : void {
-        self::setInstance($this);
         if (!InvMenuHandler::isRegistered()) {
             InvMenuHandler::register($this);
         }
         if (!PacketHooker::isRegistered()) {
             PacketHooker::register($this);
         }
+        self::setInstance($this);
+        $this->saveResource("config.yml");
 
         $this->connector = libasynql::create(
             $this, [
@@ -42,13 +49,15 @@ class Main extends PluginBase {
         );
 
         new LanguageManager();
+        new FactionsManager();
+        new GroupsManager();
         new KitsManager();
         new SessionManager();
         $this->connector->waitAll();
 
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
-        $this->getServer()->getLogger()->notice("[CORE] Everything loaded correctly.");
+        $this->getServer()->getLogger()->notice("[CORE] Successfully started. Rest in peace Carson Capik.");
     }
 
     public function getDatabase() : DataConnector {

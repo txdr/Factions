@@ -22,8 +22,9 @@ class CreateKitSubCommand extends BaseSubCommand {
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void {
+        $session = SessionManager::getInstance()->getSession($sender);
         if (!$sender instanceof Player) {
-            $sender->sendMessage("This command must be used in-game.");
+            $sender->sendMessage($session->getMessage("commands.mustBeInGame"));
             return;
         }
         $km = KitsManager::getInstance();
@@ -36,17 +37,20 @@ class CreateKitSubCommand extends BaseSubCommand {
                 new Input("kitCoolDown", "Kit CoolDown (seconds)", "86400 (one day)"),
                 new Dropdown("kitGroup", "Kit Group", KitsManager::VALID_GROUPS)
             ],
-            function(Player $player, CustomFormResponse $data) use ($km) : void {
-                $session = SessionManager::getInstance()->getSession($player);
+            function(Player $player, CustomFormResponse $data) use ($km, $session) : void {
                 $name = $data->getString("name");
                 if (!is_null($km->getKit($name))) {
                     $player->sendMessage($session->getMessage("command.kitsmgr.kitAlreadyExists"));
                     return;
                 }
+                $perm = $data->getString("kitPermission");
+                if ($perm == "") {
+                    $perm = "NO_PERMISSION";
+                }
                 $km->insertKit(
                     $name,
                     $data->getString("fancyName"),
-                    $data->getString("kitPermission"),
+                    $perm,
                     (int)$data->getString("kitCoolDown"),
                     KitsManager::VALID_GROUPS[$data->getInt("kitGroup")]
                 );

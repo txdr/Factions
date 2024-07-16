@@ -3,6 +3,7 @@
 use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
 use taylor\factions\kits\commands\KitsCommand;
+use taylor\factions\kits\commands\KitsManagerCommand;
 use taylor\factions\Main;
 use taylor\factions\utils\ItemSerializer;
 
@@ -18,11 +19,26 @@ class KitsManager {
     public function __construct() {
         self::setInstance($this);
 
-        Main::getInstance()->getDatabase()->executeGeneric("kits.init");
+        $db = Main::getInstance()->getDatabase();
+        $db->executeGeneric("kits.init");
 
         Server::getInstance()->getCommandMap()->registerAll("Factions", [
-            new KitsCommand()
+            new KitsCommand(),
+            new KitsManagerCommand()
         ]);
+
+        $db->executeSelect("kits.get", [], function(array $rows) : void {
+            foreach($rows as $row) {
+                $this->kits[$row["kitName"]] = new Kit(
+                    $row["kitName"],
+                    $row["kitFancyName"],
+                    ItemSerializer::unserializeMultiple(json_decode($row["kitContents"] ?? "{}", true)),
+                    $row["kitCoolDown"],
+                    $row["kitPermission"],
+                    $row["kitType"]
+                );
+            }
+        });
     }
 
     /*** @return Kit[] */
@@ -35,7 +51,7 @@ class KitsManager {
      * @return array<Kit>
      */
     public function getKitsOfGroup(string $group) : array {
-        return array_filter($this->kits, fn(Kit $kit) => $kit->getType() == $group);
+        return array_values(array_filter($this->kits, fn(Kit $kit) => $kit->getType() == $group));
     }
 
     public function getKit(string $name) : ?Kit {
@@ -52,11 +68,12 @@ class KitsManager {
     ) : void {
         $this->kits[$name] = new Kit($name, $fancyName, $contents, $coolDown, $permission, $type);
         Main::getInstance()->getDatabase()->executeInsert("kits.insert", [
-            ":kitName" => $name,
-            ":kitFancyName" => $fancyName,
-            ":kitPermission" => $permission,
-            ":kitCoolDown" => $coolDown,
-            ":kitContents" => json_encode(ItemSerializer::serializeMultiple($contents))
+            "kitName" => $name,
+            "kitFancyName" => $fancyName,
+            "kitPermission" => $permission,
+            "kitType" => $type,
+            "kitCoolDown" => $coolDown,
+            "kitContents" => json_encode(ItemSerializer::serializeMultiple($contents))
         ]);
     }
 

@@ -20,28 +20,13 @@ CREATE TABLE IF NOT EXISTS kits(
 -- #    :kitName string
 -- #    :kitFancyName string
 -- #    :kitPermission string
--- #    :kitCoolDown integer
--- #    :kitContents JSON
-INSERT INTO kits (
-    kitName,
-    kitFancyName,
-    kitPermission,
-    kitType,
-    kitCoolDown,
-    kitContents
-) VALUES (
-    :kitName,
-    :kitFancyName,
-    :kitPermission
-    :kitType,
-    :kitCoolDown,
-    :kitContents
-) ON DUPLICATE KEY UPDATE
-    kitFancyName = VALUES(kitFancyName),
-    kitPermission = VALUES(kitPermission),
-    kitType = VALUES(kitType),
-    kitCoolDown = VALUES(kitCoolDown),
-    kitContents = VALUES(kitContents);
+-- #    :kitType string
+-- #    :kitCoolDown int
+-- #    :kitContents string
+INSERT INTO kits(kitName, kitFancyName, kitPermission, kitType, kitCoolDown, kitContents)
+VALUES(:kitName, :kitFancyName, :kitPermission, :kitType, :kitCoolDown, kitContents)
+ON DUPLICATE KEY UPDATE kitFancyName = :kitFancyName, kitPermission = :kitPermission,
+                        kitType = :kitType, kitCoolDown = :kitCoolDown, kitContents = :kitContents;
 -- # }
 -- # { delete
 -- #    :kitName string

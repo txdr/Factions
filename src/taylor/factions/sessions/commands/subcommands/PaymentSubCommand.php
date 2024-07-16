@@ -31,11 +31,11 @@ class PaymentSubCommand extends BaseSubCommand {
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void {
+        $session = SessionManager::getInstance()->getSession($sender);
         if (!$sender instanceof Player) {
-            $sender->sendMessage("You must be a player to use this command.");
+            $sender->sendMessage($session->getMessage("commands.mustBeInGame"));
             return;
         }
-        $session = SessionManager::getInstance()->getSession($sender);
         if (is_null($player = Server::getInstance()->getPlayerExact($args["player"]))) {
             $sender->sendMessage($session->getMessage("commands.cantFindPlayer"));
             return;

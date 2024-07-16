@@ -4,6 +4,7 @@ use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseCommand;
 use CortexPE\Commando\exception\ArgumentOrderException;
 use dktapps\pmforms\MenuForm;
+use dktapps\pmforms\MenuOption;
 use dktapps\pmforms\ModalForm;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -27,11 +28,11 @@ class KitsCommand extends BaseCommand {
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void {
+        $session = SessionManager::getInstance()->getSession($sender);
         if (!$sender instanceof Player) {
-            $sender->sendMessage("This command must be used in-game.");
+            $sender->sendMessage($session->getMessage("commands.mustBeInGame"));
             return;
         }
-        $session = SessionManager::getInstance()->getSession($sender);
         $km = KitsManager::getInstance();
         if (isset($args["kit"])) {
             if (is_null($kit = $km->getKit($args["kit"]))) {
@@ -42,13 +43,17 @@ class KitsCommand extends BaseCommand {
                 $sender->sendMessage($session->getMessage("module.kits.stillOnCoolDown", [["{time}"], [FormatUtils::numberToHumanReadable($coolDown)]]));
                 return;
             }
+            if ($kit->getPermission() !== "NO_PERMISSION" && !$sender->hasPermission($kit->getPermission())) {
+                $sender->sendMessage($session->getMessage("commands.kits.noPermission"));
+                return;
+            }
             $kit->equip($sender);
             return;
         }
         $sender->sendForm(new MenuForm(
             "Kits",
             "Choose a category.",
-            array_merge(array_map(fn(string $option) => $option . "\nTap to view.", KitsManager::VALID_GROUPS), [FormatUtils::getCloseButton()]),
+            array_merge(array_map(fn(string $option) => new MenuOption($option . "\nTap to view."), KitsManager::VALID_GROUPS), [FormatUtils::getCloseButton()]),
             function(Player $player, int $selectedOption) use($km, $session) : void{
                 if (is_null($group = KitsManager::VALID_GROUPS[$selectedOption] ?? null)) {
                     return;
@@ -57,12 +62,12 @@ class KitsCommand extends BaseCommand {
                 $player->sendForm($saveForm = new MenuForm(
                     $group,
                     "Select a kit to equip.",
-                    array_merge(array_map(fn(Kit $kit) => TextFormat::colorize($kit->getFancyName() . "&r Kit\n" . $kit->getFormSubTitle($player)), $kitsOfGroup = $km->getKitsOfGroup($group)), [FormatUtils::getCloseButton()]),
+                    array_merge(array_map(fn(Kit $kit) => new MenuOption(TextFormat::colorize($kit->getFancyName() . "&r\n" . $kit->getFormSubTitle($player))), $kitsOfGroup = $km->getKitsOfGroup($group)), [FormatUtils::getCloseButton()]),
                     function(Player $player, int $selectedOption) use ($kitsOfGroup, &$saveForm, $session) : void {
                         if (is_null($kit = $kitsOfGroup[$selectedOption] ?? null)) {
                             return;
                         }
-                        if ($kit->getPermission() !== "" && !$player->hasPermission($kit->getPermission())) {
+                        if ($kit->getPermission() !== "NO_PERMISSION" && !$player->hasPermission($kit->getPermission())) {
                             $player->sendForm(new ModalForm(
                                 "No Permission",
                                 "You do not have permission to use this kit.",
@@ -81,7 +86,7 @@ class KitsCommand extends BaseCommand {
                                 "On Cool Down",
                                 join("\n", [
                                     "Your are still on cool down for this kit.",
-                                    "Your cool down is: " . FormatUtils::numberToSuffix($remaining) . "."
+                                    "Your cool down is: " . FormatUtils::numberToHumanReadable($remaining) . "."
                                 ]),
                                 function(Player $player, bool $choice) use ($saveForm): void {
                                     if ($choice) {

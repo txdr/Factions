@@ -5,20 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc953ef1-ab02-4544-a182-a77d6aefaa47" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Factions.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/GroupCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/PermissionCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/subcommands/AddGroupSubCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/messages_en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/messages_en.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/mysql.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/poggit/libasynql/generic/GenericStatementImpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/poggit/libasynql/generic/GenericStatementImpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/Main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/Kit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/Kit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/KitsManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/KitsManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsManagerCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsManagerCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/CreateKitSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/CreateKitSubCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/DeleteKitSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/DeleteKitSubCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/PlayerSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/PlayerSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/SessionManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/SessionManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/MyCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/MyCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/GiveCurrencySubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/GiveCurrencySubCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/PaymentSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/PaymentSubCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/utils/FormatUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/utils/FormatUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/utils/ItemSerializer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/utils/ItemSerializer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/utils/PlayerUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/utils/PlayerUtils.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +56,21 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/radlt/OneDrive/Desktop/Pocketmine/assistance&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Taylor Radl/Desktop/PocketmineTestServer (1)/plugins/Factions&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.17011.119" />
-        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.17011.119" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
       </set>
     </attachedChunks>
   </component>
@@ -82,6 +90,17 @@
       <workItem from="1719854774217" duration="6841000" />
       <workItem from="1719875114915" duration="2510000" />
       <workItem from="1719973461665" duration="4482000" />
+      <workItem from="1720292531812" duration="6571000" />
+      <workItem from="1720370851299" duration="10852000" />
+      <workItem from="1720561655995" duration="1771000" />
+      <workItem from="1720566366337" duration="1206000" />
+      <workItem from="1720580555159" duration="4048000" />
+      <workItem from="1720630690465" duration="1616000" />
+      <workItem from="1720649774828" duration="2798000" />
+      <workItem from="1720672140967" duration="1278000" />
+      <workItem from="1720725565589" duration="5238000" />
+      <workItem from="1720761189111" duration="2041000" />
+      <workItem from="1721008877097" duration="1331000" />
     </task>
     <servers />
   </component>
