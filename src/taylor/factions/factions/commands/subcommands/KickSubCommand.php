@@ -40,9 +40,13 @@ class KickSubCommand extends BaseSubCommand {
         $sender->sendForm(new CustomForm(
             "Kick a member",
             [new Dropdown("members", "Select a player to kick", $validMembers)],
-            function(Player $player, CustomFormResponse $data) use ($faction, $validMembers) : void {
+            function(Player $player, CustomFormResponse $data) use ($faction, $validMembers, $session) : void {
                 $name = $validMembers[$data->getInt("members")];
-                if (is_null($faction->getMembersManager()->getMember($name)))
+                $memberManager = $faction->getMembersManager();
+                if (!is_null($member = $memberManager->getMember($name))) {
+                    $memberManager->removeMember($member);
+                    $player->sendMessage($session->getMessage("commands.faction.kicked", [["{name}"], [$member->getMemberName()]]));
+                }
             }
         ));
     }

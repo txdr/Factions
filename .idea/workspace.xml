@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc953ef1-ab02-4544-a182-a77d6aefaa47" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/GroupCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/PermissionCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/taylor/factions/groups/commands/subcommands/AddGroupSubCommand.php" afterDir="false" />
+    <list default="true" id="bc953ef1-ab02-4544-a182-a77d6aefaa47" name="Changes" comment="sync">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/messages_en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/messages_en.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/mysql.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/poggit/libasynql/generic/GenericStatementImpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/poggit/libasynql/generic/GenericStatementImpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/Main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/Kit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/Kit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/factions/commands/FactionCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/factions/commands/FactionCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taylor/factions/factions/commands/subcommands/KickSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/factions/commands/subcommands/KickSubCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/KitsManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/KitsManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsManagerCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/KitsManagerCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/CreateKitSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/CreateKitSubCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/DeleteKitSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/kits/commands/subcommands/DeleteKitSubCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/PlayerSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/PlayerSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/SessionManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/SessionManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/MyCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/MyCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/GiveCurrencySubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/GiveCurrencySubCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/PaymentSubCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/sessions/commands/subcommands/PaymentSubCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/utils/FormatUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/utils/FormatUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/taylor/factions/utils/PlayerUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/taylor/factions/utils/PlayerUtils.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,10 +84,24 @@
       <workItem from="1720725565589" duration="5238000" />
       <workItem from="1720761189111" duration="2041000" />
       <workItem from="1721008877097" duration="1331000" />
+      <workItem from="1721163962357" duration="1320000" />
     </task>
+    <task id="LOCAL-00001" summary="sync">
+      <option name="closed" value="true" />
+      <created>1721164387121</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721164387121</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="sync" />
   </component>
 </project>

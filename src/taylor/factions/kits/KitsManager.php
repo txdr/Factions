@@ -11,6 +11,7 @@ class KitsManager {
 
     use SingletonTrait;
 
+    // TODO: Move this to config.yml so owners can add groups.
     public const VALID_GROUPS = ["Regular Kits", "God Kits"];
 
     /** @var array<string, Kit> */

@@ -2,6 +2,7 @@
 
 use CortexPE\Commando\BaseCommand;
 use pocketmine\command\CommandSender;
+use taylor\factions\commands\subcommands\KickSubCommand;
 use taylor\factions\factions\commands\subcommands\CreateFactionSubCommand;
 use taylor\factions\factions\commands\subcommands\InviteSubCommand;
 use taylor\factions\factions\commands\subcommands\JoinFactionSubCommand;
@@ -18,6 +19,7 @@ class FactionCommand extends BaseCommand {
         $this->registerSubCommand(new CreateFactionSubCommand());
         $this->registerSubCommand(new InviteSubCommand());
         $this->registerSubCommand(new JoinFactionSubCommand());
+        $this->registerSubCommand(new KickSubCommand());
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void {

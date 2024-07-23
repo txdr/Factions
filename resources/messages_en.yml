@@ -1,3 +1,4 @@
+# TODO: Organize and re-name keys.
 commands.cantFindPlayer: "&cCould not find that player."
 commands.pay.cantPaySelf: "&cYou cannot pay yourself."
 commands.pay.notEnoughMoney: "&cYou do not have enough &e{type} &cto make this payment."
@@ -41,5 +42,7 @@ commands.faction.cannotBeInFaction: "&cYou must be without a faction to do this.
 commands.faction.inviteExpired: "&cThe invite to that faction has expired."
 commands.faction.fullFaction: "&cThat faction is at max capacity."
 commands.faction.joined: "&aYou have successfully joined the faction &e{name}&a!"
+commands.faction.kicked: "&aYou have successfully kicked &e{name} &afrom the faction!"
+
 
 
